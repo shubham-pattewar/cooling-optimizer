@@ -78,9 +78,9 @@ def apply_custom_css() -> None:
                 color: {COLOR_TEXT_MAIN};
             }}
 
-            /* Remove excessive margins */
+            /* Container top padding and layout */
             .block-container {{
-                padding-top: 1.8rem;
+                padding-top: 4.8rem !important;
                 padding-bottom: 2.5rem;
                 padding-left: 2.5rem;
                 padding-right: 2.5rem;
@@ -89,6 +89,7 @@ def apply_custom_css() -> None:
 
             /* Header and Subtitles */
             .main-header {{
+                margin-top: 0.6rem;
                 margin-bottom: 1.2rem;
                 padding-bottom: 0.8rem;
                 border-bottom: 1px solid {COLOR_BORDER};
