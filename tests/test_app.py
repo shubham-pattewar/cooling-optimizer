@@ -80,3 +80,26 @@ def test_flaticon_rendering():
     assert missing_tag == ""
 
 
+def test_all_pages_render_via_apptest():
+    """Verify that all 7 pages in the app execute and render without unhandled exceptions."""
+    from streamlit.testing.v1 import AppTest
+
+    at = AppTest.from_file("app.py", default_timeout=30)
+    at.run()
+    assert not at.exception, f"Initial page load exceptions: {[e.value for e in at.exception]}"
+
+    pages = [
+        "Overview Dashboard",
+        "Cooling Optimizer",
+        "Sensor Data Explorer",
+        "ML Model Evaluation",
+        "Energy Savings Analysis",
+        "Case Study: Google DeepMind",
+        "About the Project",
+    ]
+
+    for page in pages:
+        at.sidebar.radio[0].set_value(page).run()
+        assert not at.exception, f"Exceptions on page '{page}': {[e.value for e in at.exception]}"
+
+

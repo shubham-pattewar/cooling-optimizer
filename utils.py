@@ -73,9 +73,14 @@ def apply_custom_css() -> None:
             /* Main Application Styling */
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-            html, body, [class*="css"] {{
+            .stApp {{
+                background-color: {COLOR_BG_PAGE} !important;
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 color: {COLOR_TEXT_MAIN};
+            }}
+
+            .stApp header {{
+                background-color: transparent !important;
             }}
 
             /* Container top padding and layout */
@@ -201,8 +206,20 @@ def apply_custom_css() -> None:
 
             /* Sidebar Tweaks */
             [data-testid="stSidebar"] {{
-                background-color: #ffffff;
+                background-color: #ffffff !important;
                 border-right: 1px solid {COLOR_BORDER};
+            }}
+
+            /* High-contrast sidebar navigation text */
+            [data-testid="stSidebar"] .stRadio label p,
+            [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label div p,
+            [data-testid="stSidebar"] .stRadio label span {{
+                color: #1e293b !important;
+                font-weight: 500 !important;
+                font-size: 0.88rem !important;
+            }}
+            [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:hover p {{
+                color: {COLOR_PRIMARY} !important;
             }}
 
             /* Streamlit Button Tweaks */
